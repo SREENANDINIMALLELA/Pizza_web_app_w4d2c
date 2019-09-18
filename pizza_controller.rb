@@ -33,11 +33,12 @@ get '/pizza_orders/:id' do
 end
 
 
-
-
 post '/pizza_orders/:id/edit' do
-    @order = PizzaOrder.find(params[:id])
-    @order.update
+  p params[:first_name]
+    @order_new = PizzaOrder.new(params)
+    @order_old = PizzaOrder.find(params[:id])
+    @order_new.id=@order_old.id
+    @order_new.update()
 erb(:update)
 end
 

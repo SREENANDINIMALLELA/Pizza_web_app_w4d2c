@@ -2,7 +2,8 @@ require_relative('../db/sql_runner')
 
 class PizzaOrder
 
-  attr_reader :first_name, :last_name, :topping, :quantity, :id
+  attr_reader :first_name, :last_name, :topping, :quantity
+  attr_accessor :id
 
   def initialize( options )
     @id = options['id'].to_i
@@ -53,7 +54,9 @@ class PizzaOrder
     )
     WHERE id = $5"
     values = [@first_name, @last_name, @topping, @quantity, @id]
-    SqlRunner.run( sql, values )
+    p  "hgdjagk#{@id}"
+   SqlRunner.run( sql, values )
+
   end
 
   def self.delete_all()
